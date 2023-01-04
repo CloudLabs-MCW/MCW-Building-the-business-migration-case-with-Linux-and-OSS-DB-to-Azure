@@ -148,7 +148,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 ### Task 2: Migration MySQL database to Azure
 
-1. In the Azure Portal, navigate to the newly created **Azure Database Migration Service** and select the **+ New Migration Project** button.
+1. In the Azure Portal, navigate to **Azure Database Migration Service** in and select the **+ New Migration Project** button.
 
     ![Azure Database Migration Service blade with New Migration Project button highlighted.](images/2022-11-21-21-32-14.png "New Migration Project button")
 
