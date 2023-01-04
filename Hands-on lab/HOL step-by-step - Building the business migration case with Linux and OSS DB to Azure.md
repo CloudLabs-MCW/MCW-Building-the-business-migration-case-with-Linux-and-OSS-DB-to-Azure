@@ -344,7 +344,7 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 12. In the Azure Portal, navigate to the **Azure Database for MySQL** instance, then select the **Networking** link under **Settings**. The firewall must be configured to allow the web application to connect to the database.
 
-    ![Azure Database for MySQL blade with Networking link highlighted.](images/2022-11-22-00-21-05.png "Azure Database for MySQL Networking link")
+    ![Azure Database for MySQL blade with Networking link highlighted.](images/Ex2-T2-S12.png "Azure Database for MySQL Networking link")
 
 13. On the **Networking** pane, add a new **Firewall rule** with the following values, then select **Save**.
 
@@ -352,7 +352,7 @@ In this task, you will connect to the VM over SSH to install and configure the w
     - **Start IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
     - **End IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
 
-    ![Networking pane with firewall rulename and save hihglighted.](images/2022-11-22-00-23-09.png "Networking pane")
+    ![Networking pane with firewall rulename and save hihglighted.](images/Ex2-T2-S13.png "Networking pane")
 
 14. Open a new browser tab, and navigate to the following URL to test that the web application is installed. Be sure to use `http://` since the web application is not currently configured for TLS/SSL.
 
@@ -362,13 +362,12 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 15. The web application will look similar to the following screenshot. Login using the following credentials:
   
-   - **Username**: `Admin`
-   -  **Password**:`ipamadmin`
+    - **Username**: `Admin`
+    - **Password**:`ipamadmin`
 
-    > **Note**: The first time you login to the web application, it will prompt you to change the Admin password. A recommended password to change it to is `demo!pass123`.
+   > **Note**: The first time you login to the web application, it will prompt you to change the Admin password. A recommended password to change it to is `demo!pass123`.
 
-
-    ![Web application is displayed in web browser.](images/2022-11-21-16-54-27.png "Web application")
+   ![Web application is displayed in web browser.](images/2022-11-21-16-54-27.png "Web application")
 
 
 
