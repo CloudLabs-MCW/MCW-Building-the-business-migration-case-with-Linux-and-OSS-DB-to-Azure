@@ -215,7 +215,7 @@ In this exercise, you will create a new Red Hat Enterprise Linux virtual machine
 
 In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM) that will be the destination for migrating the on-premises Web Application to Azure.
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab set up.
+1. Sign in to the [Azure Portal](https://portal.azure.com). 
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
@@ -242,7 +242,8 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 7. Set the **Authentication type** to **Password**, then enter a **Username** and **Password** for the VM administrator account.
 
-    > **Note**: Be sure to save the Username and Password for the VM, so it can be used later. A recommendation for an easy to remember Username is `demouser` and Password is `demo!pass123`.
+   - **Username:** `demouser` 
+   - **Password:** `demo!pass123`
 
     ![Administrator account credentials are set.](images/new5.png "Administrator account credentials")
 
@@ -273,7 +274,7 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 13. Select **Create** to begin provisioning the virtual machine once the **Validation passed** message is shown.
 
-    ![Validation passed and create button are highlighted.](images/new10.png "Validation passed")
+    ![Validation passed and create button are highlighted.](images/Ex2-T1-S13.png "Validation passed")
 
 ### Task 2: Install web application
 
@@ -281,11 +282,11 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 1. In the Azure Portal, navigate to the newly created **Virtual Machine**.
 
-    ![Virtual machine pane is open.](images/new11.png "Virtual machine pane")
+    ![Virtual machine pane is open.](images/Ex2-T2-S1.png "Virtual machine pane")
 
 2. On the **Overview** pane of the **Virtual machine** blade, locate and copy the **Public IP Address** for the VM. This will be used to connect to the VM using SSH.
 
-    ![Virtual Machine blade is shown with Public IP Address highlighted.](images/new12.png "Virtual machine public IP ")
+    ![Virtual Machine blade is shown with Public IP Address highlighted.](images/Ex2-T2-S2.png "Virtual machine public IP ")
 
 3. In the Azure portal `https://portal.azure.com`, select the Azure **Cloud Shell** icon from the top menu.
 
@@ -297,8 +298,8 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
   
-      - **Resource Group**: Select **Use existing** then <inject key="Resource Group Name" enableCopy="false"/>
-      - **Storage account**: **storage<inject key="Suffix" enableCopy="false"/>**
+      - **Resource Group**: Select **Use existing** then click on **Terrafirm-<inject key="DeploymentID" />**
+      - **Storage account**: **storage<inject key="DeploymentID" enableCopy="false"/>**
       - **File Share**: **blob**
 
     ![Cloud Shell icon is highlighted](images/new16.png "Cloud Shell icon")
@@ -333,18 +334,13 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 10. Within the `config.php` file, set the following values for the **database connection details** section to configure it for Azure Database for MySQL.
 
-    - **host**: Enter the **Server name** for the **Azure Database for MySQL** instance that was previously copied.
-    - **user**: Enter the Admin user name for the **Azure Database for MySQL** instance.
-    - **pass**: Enter the Admin password for the **Azure Database for MySQL** instance.
+    - **host**: Enter the **Server name** for the **Azure Database for MySQL** instance that was previously copied in **Exercise 1** .
+    - **user**: `mysqladmin`.
+    - **pass**: `demo!pass123`.
 
-    ![config.php file with database connection details set.](images/2022-11-22-00-09-35.png "config.php file")
+    ![config.php file with database connection details set.](images/Ex2-T2-S10.png "config.php file")
 
-    > **Note**: If you followed the suggestions in the lab, then the Azure Database for MySQL administrator credentials should be the following:
-    >
-    > - **User name**: `mysqladmin`
-    > - **Password**: `demo!pass123`
-
-11. To save the file, press `^X` (ctrl-X) to exit the editor, press `Y` to save the modified buffer, then press **Enter** to write the changes to the file.
+ 11. To save the file, press `^X` (ctrl-X) to exit the editor, press `Y` to save the modified buffer, then press **Enter** to write the changes to the file.
 
 12. In the Azure Portal, navigate to the **Azure Database for MySQL** instance, then select the **Networking** link under **Settings**. The firewall must be configured to allow the web application to connect to the database.
 
@@ -353,8 +349,8 @@ In this task, you will connect to the VM over SSH to install and configure the w
 13. On the **Networking** pane, add a new **Firewall rule** with the following values, then select **Save**.
 
     - **Firewall rule name**: `webapp-vm`
-    - **Start IP address**: Enter the **Public IP Address** for the `terrafirm-webapp-vm` virtual machine.
-    - **End IP address**: Enter the **Public IP Address** for the `terrafirm-webapp-vm` virtual machine.
+    - **Start IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
+    - **End IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
 
     ![Networking pane with firewall rulename and save hihglighted.](images/2022-11-22-00-23-09.png "Networking pane")
 
@@ -364,10 +360,16 @@ In this task, you will connect to the VM over SSH to install and configure the w
     http://<ip-address>
     ```
 
-15. The web application will look similar to the following screenshot.
+15. The web application will look similar to the following screenshot. Login using the following credentials:
+  
+   - **Username**: `Admin`
+   -  **Password**:`ipamadmin`
+
+    > **Note**: The first time you login to the web application, it will prompt you to change the Admin password. A recommended password to change it to is `demo!pass123`.
+
 
     ![Web application is displayed in web browser.](images/2022-11-21-16-54-27.png "Web application")
 
-    > **Note**: The default username is `Admin` and password is `ipamadmin`. The first time you login to the web application, it will prompt you to change the Admin password. A recommended password to change it to is `demo!pass123` so it's easily remembered for the lab.
+
 
 
