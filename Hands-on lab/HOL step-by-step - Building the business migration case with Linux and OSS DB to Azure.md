@@ -34,8 +34,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Exercise 1: MySQL database migration](#exercise-1-mysql-database-migration)
         - [Task 1: Create Azure Database for MySQL](#task-1-create-azure-database-for-mysql)
-        - [Task 2: Create Azure Database Migration Service](#task-2-create-azure-database-migration-service)
-        - [Task 3: Migration MySQL database to Azure](#task-3-migration-mysql-database-to-azure)
+        - [Task 2: Migration MySQL database to Azure](#task-2-migration-mysql-database-to-azure)
     - [Exercise 2: Create VM to migrate web application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Red Hat Enterprise Linux VM for application hosting](#task-1-create-red-hat-enterprise-linux-vm-for-application-hosting)
         - [Task 2: Install web application](#task-2-install-web-application)
@@ -74,14 +73,6 @@ These are the components of the preferred solution diagram:
     - Azure Bastion for secure SSH access to Azure VMs
     - Azure Firewall to protect the front-end web applications (a common component to use in a secure Azure networking model)
     - Azure Monitor setup to implement monitoring of Azure VMs
-
-## Requirements
-
-- You must have a working Azure subscription to carry out this hands-on lab step-by-step.
-
-## Before the hands-on lab
-
-Refer to the [Before the hands-on lab](Before%20the%20HOL%20-%20Building%20the%20business%20migration%20case%20with%20Linux%20and%20OSS%20DB%20to%20Azure.md) setup guide manual before continuing to the lab exercises.
 
 ## Exercise 1: MySQL database migration
 
@@ -154,54 +145,8 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![The Create database pane is shown with values entered.](images/2022-11-21-21-28-24.png "Create database pane")
 
-### Task 2: Create Azure Database Migration Service
 
-1. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
-
-    ![The Create a resource button on the Azure Portal Home page is highlighted.](images/2022-11-20-21-08-40.png "Create a resource")
-
-2. Within the **Search services and marketplace** field, type `azure database migration service`, press Enter, then select **Azure Database Migration Service** in the search results.
-
-    ![Azure Database Migration Service is highlighted in marketplace search results.](images/2022-11-20-23-04-06.png "Azure Database Migration Service in marketplace")
-
-3. Select **Create**.
-
-4. On the **Select migration scenario and Database Migration Service** pane, select the following values:
-
-    - **Source server type**: `MySQL`
-    - **Target server type**: `Azure Database for MySQL`
-
-    ![Source and Target type fields selected for MySQL.](images/2022-11-20-23-06-38.png "Migration source and target server types")
-
-5. Select the **Select** button.
-
-    ![Select button](images/2022-11-20-23-08-29.png "Select button")
-
-6. On the **Create Migration Service** pane, select the following values:
-
-    - **Resource group**: Select the resource group that you created for this lab. Such as `terrafirm-rg`.
-    - **Migration service name**: Enter a unique name, such as `terrafirm-database-migration`.
-    - **Location**: Select the Azure Region that was used to create the resource group.
-
-    ![Create Migration Service pane with values entered.](images/2022-11-20-23-10-49.png "Create Migration Service pane")
-
-7. Select **Next: Networking >>**.
-
-    ![Next Networking button highlighted.](images/2022-11-20-23-17-04.png "Next Networking button")
-
-8. On the **Networking** tab, select the **terrafirm-hub-vnet/hub** VNet and Subnet.
-
-    ![On Create Migration Service screen the VNet is selected.](images/2022-11-20-23-19-09.png "VNet selected")
-
-9. Select **Review + create**.
-
-    ![Review + create button highlighted.](images/2022-11-20-23-18-39.png "Review + create button")
-
-10. Select **Create** to provision the service.
-
-    ![Create button is highlighted.](images/2022-11-20-23-21-18.png "Create button")
-
-### Task 3: Migration MySQL database to Azure
+### Task 2: Migration MySQL database to Azure
 
 1. In the Azure Portal, navigate to the newly created **Azure Database Migration Service** and select the **+ New Migration Project** button.
 
