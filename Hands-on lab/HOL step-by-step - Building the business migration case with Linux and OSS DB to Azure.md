@@ -229,16 +229,16 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 5. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
-    - **Resource group**: Select the resource group that you created for this lab. Such as `terrafirm-rg`.
-    - **Virtual machine name**: Give the VM a unique name, such as `terrafirm-webapp-vm`.
-    - **Region**: Select the Azure Region that was used to create the resource group.
-    - **Image**: Verify the image is set to `Red Hat Enterprise Linux 9.0 (LVM)`.
+    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" />**.
+    - **Virtual machine name**: Give the VM a unique name, such as **terrafirm-webapp-vm-<inject key="DeploymentID" />**.
+    - **Region**: **<inject key="location" />**.
+    - **Image**: Verify the image is set to **Red Hat Enterprise Linux 9.0 (LVM)**.
 
-    ![Create a virtual machine with fields set.](images/new3.png "Create a virtual machine pane")
+    ![Create a virtual machine with fields set.](images/Ex2-T1-S5.png "Create a virtual machine pane")
 
 6. Set the **Size** field by selecting the **Standard_D4s_v5** virtual machine size.
 
-    ![VM size is set.](images/new4.png "VM size")
+    ![VM size is set.](images/Ex2-T1-S6.png "VM size")
 
 7. Set the **Authentication type** to **Password**, then enter a **Username** and **Password** for the VM administrator account.
 
@@ -261,7 +261,7 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 10. For the **Public IP**, ensure that a **new** Public IP is selected so a Public IP is provisioned to enable Internet access to the VM. This will be used to access the Web Application over HTTP.
 
-    ![Public IP selected.](images/new7.png "Public IP")
+    ![Public IP selected.](images/Ex2-T1-S10.png "Public IP")
 
 11. For the **Select inbound ports**, select the **HTTP (80)** and **SSH (2)** ports to allow both HTTP and SSH traffic through the Network Security Group firewall to reach the VM.
 
