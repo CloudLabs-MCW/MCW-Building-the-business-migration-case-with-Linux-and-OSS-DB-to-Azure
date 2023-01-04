@@ -38,8 +38,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Exercise 2: Create VM to migrate web application](#exercise-2-create-vm-to-migrate-web-application)
         - [Task 1: Create Red Hat Enterprise Linux VM for application hosting](#task-1-create-red-hat-enterprise-linux-vm-for-application-hosting)
         - [Task 2: Install web application](#task-2-install-web-application)
-    - [After the hands-on lab](#after-the-hands-on-lab)
-        - [Task 1: Delete resource group to remove the lab environment](#task-1-delete-resource-group-to-remove-the-lab-environment)
+    
 
 <!-- /TOC -->
 
@@ -86,17 +85,17 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
-    ![Create a resource on Azure Portal Home page.](images/2022-11-20-21-08-40.png "Create a resource")
+    ![Create a resource on Azure Portal Home page.](images/Ex1-T1-S1.png "Create a resource")
 
 3. Within the **Search services and marketplace** field, type `mysql`, press Enter, then select **Azure Database for MySQL** in the search results.
 
-    ![The Azure Database for MySQL result shown in the marketplace.](images/2022-11-20-22-24-33.png "Azure Database for MySQL in the marketplace")
+    ![The Azure Database for MySQL result shown in the marketplace.](images/Ex1-T1-S2.png "Azure Database for MySQL in the marketplace")
 
 4. Select **Create**.
 
 5. On the **Select Azure Database for MySQL deployment option** pane, select the **Resource type** of **Flexible server**, then select **Create**.
 
-    ![The Flexible server option is selected with the create button highlighted.](images/2022-11-20-22-27-13.png "Flexible server resource type")
+    ![The Flexible server option is selected with the create button highlighted.](images/Ex1-T1-S5.png "Flexible server resource type")
 
 6. On the **Flexible server** pane, select the following values:
 
@@ -105,45 +104,47 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
     - **Region**: Select the Azure Region that was used to create the resource group.
     - **MySQL version**: `8.0`
 
-    ![The Flexible server pane is shown with values entered.](images/2022-11-20-22-32-44.png "Flexible server configuration")
+    ![The Flexible server pane is shown with values entered.](images/Ex1-T1-S6.png "Flexible server configuration")
 
 7. Under **Administrator account**, set the **Admin username** and **Password** for the MySQL admin account.
+   
+    - **Admin username**: `mysqladmin`
+    -  **Password**: `demo!pass123`
 
-    ![Administrator account credentials are set.](images/2022-11-20-22-37-20.png "Administrator account credentials")
+    ![Administrator account credentials are set.](images/Ex1-T1-S7.png "Administrator account credentials")
 
-    > **Note**: Be sure to save the **Admin username** and **Password**, so it can be used later. A recommendation for an easy to remember Username is `mysqladmin` and Password is `demo!pass123`.
-
+   
 8. Select **Next: Networking >**.
 
-    ![Image with Next Networking button highlighted.](images/2022-11-20-22-41-09.png "Next Networking button")
+    ![Image with Next Networking button highlighted.](images/Ex1-T1-S8.png "Next Networking button")
 
 9. On the **Networking** tab, under **Firewall rules**, select the checkbox for **Allow public access from any Azure service within Azure to this server**.
 
-    ![Allow public access from any Azure service within Azure to this server is checked.](images/2022-11-20-22-44-09.png "Firewall rules")
+    ![Allow public access from any Azure service within Azure to this server is checked.](images/Ex1-T1-S9.png "Firewall rules")
 
 10. Select **Review + create**.
 
-    ![Review + create button](images/2022-11-20-22-44-57.png "Review + create button")
+    ![Review + create button](images/Ex1-T1-S10.png "Review + create button")
 
 11. Select **Create** to provision the service.
 
-    ![The Review + create screen with Create button highlighted.](images/2022-11-20-22-46-07.png "Review + create screen")
+    ![The Review + create screen with Create button highlighted.](images/Ex1-T1-S11.png "Review + create screen")
 
 12. Once provisioning has completed navigate to the **Azure Database for MySQL** resource that was just created, copy and save the **Server name** for use later.
 
-    ![The Azure Database for MySQL server name is highlighted.](images/2022-11-21-23-57-40.png "Azure Database for MySQL blade")
+    ![The Azure Database for MySQL server name is highlighted.](images/Ex1-T1-S12.png "Azure Database for MySQL blade")
 
 13. Select **Databases** under **Settings** on the side of the pane.
 
-    ![Databases link is hihghlighted.](images/2022-11-21-21-26-19.png "Databases link")
+    ![Databases link is hihghlighted.](images/Ex1-T1-S13.png "Databases link")
 
 14. Select **+ Add** to create a new database.
 
-    ![Add database button is highlighted.](images/2022-11-21-21-27-38.png "Add database button")
+    ![Add database button is highlighted.](images/Ex1-T1-S14.png "Add database button")
 
 15. On the **Create Database** pane, enter `phpipam` in the **Name** field, then select **Save**. This will create a new MySQL database that will be the target for the database migration.
 
-    ![The Create database pane is shown with values entered.](images/2022-11-21-21-28-24.png "Create database pane")
+    ![The Create database pane is shown with values entered.](images/Ex1-T1-S15.png "Create database pane")
 
 
 ### Task 2: Migration MySQL database to Azure
@@ -221,7 +222,7 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
-    ![Create a resource on Azure Portal Home page highlighted.](images/new1.png "Create a resource")
+    ![Create a resource on Azure Portal Home page highlighted.](images/Ex1-T1-S1.png "Create a resource")
 
 3. Within the **Search services and marketplace** field, type **Red Hat Enterprise Linux** and press Enter to search the marketplace, then select **Red Hat Enterprise Linux**.
 
@@ -372,28 +373,4 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
     > **Note**: The default username is `Admin` and password is `ipamadmin`. The first time you login to the web application, it will prompt you to change the Admin password. A recommended password to change it to is `demo!pass123` so it's easily remembered for the lab.
 
-## After the hands-on lab
 
-Duration: 15 minutes
-
-After you have successfully completed the hands-on lab step-by-step, you will want to delete the Resource Group created. This will free up your subscription from future charges.
-
-### Task 1: Delete the resource group to remove the lab environment
-
-1. Go to the **Azure Portal**.
-
-2. Go to your **Resource groups**.
-
-3. Select the **Resource group** you created.
-
-    ![The Resource group list in the Azure Portal with name highlighted.](images/2022-11-20-22-01-36.png "Resource group list in Azure Portal")
-
-4. Select **Delete Resource group**.
-
-    ![The Resource group pane with Delete button highlighted.](images/2022-11-20-22-02-33.png "Delete resource group button")
-
-5. Enter the name of the **Resource group** and select **Delete**.
-
-    ![The Delete resource group confirmation prompt with Resource group name field highlighted.](images/2022-11-20-22-03-49.png "Delete resource group confirmation prompt")
-
-You should follow all steps provided *after* attending the Hands-on lab.
