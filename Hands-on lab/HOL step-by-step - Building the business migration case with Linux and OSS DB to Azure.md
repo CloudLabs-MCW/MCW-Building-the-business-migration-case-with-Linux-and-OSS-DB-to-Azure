@@ -30,8 +30,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Abstract and learning objectives](#abstract-and-learning-objectives)
     - [Overview](#overview)
     - [Solution architecture](#solution-architecture)
-    - [Requirements](#requirements)
-    - [Before the hands-on lab](#before-the-hands-on-lab)
+   
     - [Exercise 1: MySQL database migration](#exercise-1-mysql-database-migration)
         - [Task 1: Create Azure Database for MySQL](#task-1-create-azure-database-for-mysql)
         - [Task 2: Migration MySQL database to Azure](#task-2-migration-mysql-database-to-azure)
@@ -81,7 +80,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 ### Task 1: Create Azure Database for MySQL
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). Ensure that you're using a subscription associated with the same resources you created during the Before the hands-on lab setup.
+1. Sign in to the [Azure Portal](https://portal.azure.com). 
 
 2. On the **Home** page within the Azure Portal, towards the top, select **Create a resource**.
 
@@ -99,10 +98,10 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 6. On the **Flexible server** pane, select the following values:
 
-    - **Resource group**: Select the resource group that you created for this lab. Such as `terrafirm-rg`.
-    - **Server name**: Enter a unique name, such as `terrafirm-mysql-db`.
-    - **Region**: Select the Azure Region that was used to create the resource group.
-    - **MySQL version**: `8.0`
+    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" />**.
+    - **Server name**: Enter a unique name, such as **terrafirm-mysql-db<inject key="DeploymentID" />**.
+    - **Region**: *<inject key="location" />**.
+    - **MySQL version**: **8.0**
 
     ![The Flexible server pane is shown with values entered.](images/Ex1-T1-S6.png "Flexible server configuration")
 
@@ -149,7 +148,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 ### Task 2: Migration MySQL database to Azure
 
-1. In the Azure Portal, navigate to **Azure Database Migration Service** in and select the **+ New Migration Project** button.
+1. In the Azure Portal, navigate to **Azure Database Migration Service** in **Terrafirm-<inject key="DeploymentID" />** and select the **+ New Migration Project** button.
 
     ![Azure Database Migration Service blade with New Migration Project button highlighted.](images/2022-11-21-21-32-14.png "New Migration Project button")
 
