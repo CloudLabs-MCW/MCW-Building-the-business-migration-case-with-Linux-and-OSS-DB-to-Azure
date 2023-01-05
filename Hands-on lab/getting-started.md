@@ -8,7 +8,7 @@
 
    ![](images/getting_started_env.png)
    
-  >**Note:** You will see **SUFFIX** value on the **Environment details** tab, please use it wherever you see SUFFIX in the lab steps. This is a 6 digit unique ID associated with each lab deployment. 
+  >**Note:** You will see **DeploymentID** value on the **Environment details** tab, please use it wherever you see DeploymentID in the lab steps. This is a 6 digit unique ID associated with each lab deployment. 
   
 ## Log-in to the Azure portal
 
