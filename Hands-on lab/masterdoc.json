@@ -1,14 +1,9 @@
 [ {
   "Name": "MCW-Building-the-business-migration-case-with-Linux-and-OSS-DB-to-Azure",
   "Language": "English",
-  "Files": [
-    {
-      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-the-business-migration-case-with-Linux-and-OSS-DB-to-Azure/stage/Hands-on%20lab/getting-started.md",
+     {
+      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-the-business-migration-case-with-Linux-and-OSS-DB-to-Azure/main/Hands-on%20lab/HOL%20step-by-step%20-%20Building%20the%20business%20migration%20case%20with%20Linux%20and%20OSS%20DB%20to%20Azure.md",
       "Order": 1
-    }
-    {
-      "RawFilePath": "https://raw.githubusercontent.com/CloudLabs-MCW/MCW-Building-the-business-migration-case-with-Linux-and-OSS-DB-to-Azure/stage/Hands-on%20lab/HOL%20step-by-step%20-%20Building%20the%20business%20migration%20case%20with%20Linux%20and%20OSS%20DB%20to%20Azure.md",
-      "Order": 2
     }
      ]
 } ]
