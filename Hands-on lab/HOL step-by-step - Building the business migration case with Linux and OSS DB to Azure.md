@@ -86,7 +86,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![Create a resource on Azure Portal Home page.](images/Ex1-T1-S1.png "Create a resource")
 
-3. Within the **Search services and marketplace** field, type `mysql`, press Enter, then select **Azure Database for MySQL** in the search results. Click **Create** and **Azure Database for MySQL**.
+3. Within the **Search services and marketplace** field, type `mysql`, press Enter, then select **Azure Database for MySQL** in the search results. Click **Create** and select **Azure Database for MySQL**.
 
     ![The Azure Database for MySQL result shown in the marketplace.](images/azure-data-mysql.png "Azure Database for MySQL in the marketplace")
 
