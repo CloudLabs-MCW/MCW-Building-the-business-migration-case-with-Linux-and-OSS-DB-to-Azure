@@ -146,11 +146,53 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 ### Task 2: Migration MySQL database to Azure
 
-1. In the Azure Portal, from **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**  resource group navigate to **terrafirm-database-migration<inject key="DeploymentID" enableCopy="false" />**  **Azure Database Migration Service**,  and select the **+ New Migration Project** button.
+1.  In the Azure Portal, from **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**  resource group navigate to **terrafirm-onprem-workload-vm** and copy the **Public IP address** and paste in any text editor such as *Notepad*.
+
+    ![terrafirm-onprem-workload-vm ip address.](images/terrafirm-ip.png "public IP address")
+
+1. Select the Azure **Cloud Shell** icon from the top menu.
+
+    ![Cloud Shell icon is highlighted](images/new14.png "Cloud Shell icon")
+    
+1. In the Cloud Shell window that opens at the bottom of your browser window, select **Bash**.
+
+    ![Cloud Shell icon is highlighted](images/new15.png "Cloud Shell icon")
+
+1. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
+  
+      - **Resource Group**: Select **Use existing** then click on **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**
+      - **Storage account**: **storage<inject key="DeploymentID" enableCopy="false"/>**
+      - **File Share**: **blob**
+
+    ![Cloud Shell icon is highlighted](images/new16.png "Cloud Shell icon")
+
+1. Within the **Cloud Shell**, enter the following `ssh` command to connect to the VM using SSH. Be sure to replace the `<ip-address>` placeholder with the **Public IP Address** that was just copied for the VM in step 1.
+
+    ```bash
+    ssh demouser@<ip-address>
+    ```
+1. When prompted, enter `yes` and press Enter to access the certificate warning for this VM. Then continue by entering the **Password** as `demo!pass123` for the VM.
+
+    ![Cloud Shell is open with SSH certificate and password prompt.](images/new17.png "Cloud Shell")
+
+1. Next, run the following command to login to mysql server and enter the password as `demopass123`.
+    
+   ```bash
+   mysql -u root -p
+    ```
+1. Once you are in the mysql server run the following command to create a user and grant previleges to it.
+
+   ```bash
+   CREATE USER 'demouser'@'%' IDENTIFIED BY 'demopass123';
+   GRANT ALL PRIVILEGES ON *.* TO 'demouser'@'%' WITH GRANT OPTION;
+   FLUSH PRIVILEGES;
+    ```
+
+1. Navigate to **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**  resource group and click on **terrafirm-database-migration<inject key="DeploymentID" enableCopy="false" />**  *Azure Database Migration Service*,  and select the **+ New Migration Project** button.
 
     ![Azure Database Migration Service blade with New Migration Project button highlighted.](images/Ex1-T2-S1.png "New Migration Project button")
 
-2. On the **New migration project** blade, select the following values:
+1. On the **New migration project** blade, select the following values:
 
     - **Project name**: `phpipam`
     - **Source server type**: `MySQL`
@@ -159,11 +201,11 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![New migration project with values entered.](images/Ex1-T2-S2.png "New migration project")
 
-3. Select **Create and run activity**.
+1. Select **Create and run activity**.
 
     ![Create and run activity button highlighted.](images/Ex1-T2-S3.png "Create and run activity button")
 
-4. On the **MySQL to Azure Database for MySQL Offline Data Migration Wizard** blade, enter the following values on the **Select source** tab, then select **Next: Select target >>**.
+1. On the **MySQL to Azure Database for MySQL Offline Data Migration Wizard** blade, enter the following values on the **Select source** tab, then select **Next: Select target >>**.
 
     - **Source server name**: Enter the **Public IP Address** of the on-premises workload server named similar to `terrafirm-onprem-workload-vm`.
     - **Server port**: `3306`
@@ -173,7 +215,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![Offline Data Migration Wizard select source tab with values entered.](images/Ex1-T2-S4.png "Select source tab")
 
-5. On the **Select target** tab, enter the following values to select the **Azure Database for MySQL** service that was previously provisioned.
+1. On the **Select target** tab, enter the following values to select the **Azure Database for MySQL** service that was previously provisioned.
 
     - **Location**: **<inject key="location" enableCopy="false" />**.
     - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**.
@@ -183,23 +225,23 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![Offline Data Migration Wizard screen with selected target tab with values entered and Next: Select databases highlighted](images/Ex1-T2-S5.png "Select target tab")
 
-6. On the **Select database** tab, ensure the `phpipam` database is selected for both the **Source Database** and **Target Database**, then select **Next: Select tables >>**.
+1. On the **Select database** tab, ensure the `phpipam` database is selected for both the **Source Database** and **Target Database**, then select **Next: Select tables >>**.
 
     ![The phpipam source and target database are selected with Next: Select tables highlighted.](images/Ex1-T2-S6.png "phpipam source and target database")
 
-7. On the **Select tables** tab, expand the `phpipam` table, and make sure all tables are selected, then select **Review and start migration**.
+1. On the **Select tables** tab, expand the `phpipam` table, and make sure all tables are selected, then select **Review and start migration**.
 
     ![All tables selected with Review and start migration highlighted.](images/Ex1-T2-S7.png "All tables selected")
 
-8. On the **Summary** tab, enter `phpipam` into the **Activity name** field, then select **Start migration**.
+1. On the **Summary** tab, enter `phpipam` into the **Activity name** field, then select **Start migration**.
 
     ![Summary tab with Activity name populated and Start migration highlighted.](images/Ex1-T2-S8.png "Summary tab")
 
-9. A migration details pane will now display, showing the **Status** as **Pending** while the migration is running.
+1. A migration details pane will now display, showing the **Status** as **Pending** while the migration is running.
 
     ![Migration pending status is highlighted.](images/Ex1-T2-S9.png "Migration pending")
 
-10. After a minute, select **Refresh** to check if the migration has been completed. Once complete, the **Status** will show as **Completed** and the **Migration details** will display the total number of tables that have been migrated.
+1. After a minute, select **Refresh** to check if the migration has been completed. Once complete, the **Status** will show as **Completed** and the **Migration details** will display the total number of tables that have been migrated.
 
     ![Migration complete status and refresh are highlighted](images/Ex1-T2-S10.png "Migration completed")
 
@@ -289,32 +331,20 @@ In this task, you will connect to the VM over SSH to install and configure the w
 3. In the Azure portal `https://portal.azure.com`, select the Azure **Cloud Shell** icon from the top menu.
 
     ![Cloud Shell icon is highlighted](images/new14.png "Cloud Shell icon")
-    
-4. In the Cloud Shell window that opens at the bottom of your browser window, select **Bash**.
 
-    ![Cloud Shell icon is highlighted](images/new15.png "Cloud Shell icon")
-
-5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
-  
-      - **Resource Group**: Select **Use existing** then click on **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**
-      - **Storage account**: **storage<inject key="DeploymentID" enableCopy="false"/>**
-      - **File Share**: **blob**
-
-    ![Cloud Shell icon is highlighted](images/new16.png "Cloud Shell icon")
-
-6. Within the **Cloud Shell**, enter the following `ssh` command to connect to the VM using SSH. Be sure to replace the `<ip-address>` placeholder with the **Public IP Address** that was just copied for the VM in step 2.
+4. Within the **Cloud Shell**, enter the following `ssh` command to connect to the VM using SSH. Be sure to replace the `<ip-address>` placeholder with the **Public IP Address** that was just copied for the VM in step 2.
 
     ```bash
     ssh demouser@<ip-address>
     ```
 
-7. When prompted, enter `yes` and press Enter to access the certificate warning for this VM. Then continue by entering the **Password** for the VM.
+5. When prompted, enter `yes` and press Enter to access the certificate warning for this VM. Then continue by entering the **Password** for the VM.
 
     ![Cloud Shell is open with SSH certificate and password prompt.](images/new17.png "Cloud Shell")
 
     > **Note**: If you followed the previous suggestions for the VM username and password, then the password for the VM will be `demo!pass123`. Otherwise, enter the password you chose when provisioning the VM.
 
-8. Once connected to the VM via SSH, execute the following commands that will download an install script and run it. This will install the web application on the VM:
+6. Once connected to the VM via SSH, execute the following commands that will download an install script and run it. This will install the web application on the VM:
 
     ```bash
     wget https://raw.githubusercontent.com/microsoft/MCW-Building-the-business-migration-case-with-Linux-and-OSS-DB-to-Azure/main/Hands-on%20lab/resources/deployment/install-phpipam.sh
@@ -322,7 +352,7 @@ In this task, you will connect to the VM over SSH to install and configure the w
     sudo ./install-phpipam.sh
     ```
 
-9. Execute the following command to open the `config.php` file for the web application in a text editor. The application needs to be configured to connect to the **Azure Database for MySQL** database that was previously migrated.
+7. Execute the following command to open the `config.php` file for the web application in a text editor. The application needs to be configured to connect to the **Azure Database for MySQL** database that was previously migrated.
 
     ```bash
     sudo nano /var/www/html/config.php
@@ -330,7 +360,7 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
     ![config.php file is open in editor.](images/2022-11-22-00-06-57.png "config.php file")
 
-10. Within the `config.php` file, set the following values for the **database connection details** section to configure it for Azure Database for MySQL.
+8. Within the `config.php` file, set the following values for the **database connection details** section to configure it for Azure Database for MySQL.
 
     - **host**: Enter the **Server name** for the **Azure Database for MySQL** instance that was previously copied in **Exercise 1** .
     - **user**: `mysqladmin`.
@@ -338,13 +368,13 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
     ![config.php file with database connection details set.](images/Ex2-T2-S10.png "config.php file")
 
- 11. To save the file, press `^X` (ctrl-X) to exit the editor, press `Y` to save the modified buffer, then press **Enter** to write the changes to the file.
+9. To save the file, press `^X` (ctrl-X) to exit the editor, press `Y` to save the modified buffer, then press **Enter** to write the changes to the file.
 
-12. In the Azure Portal, navigate to the **Azure Database for MySQL** instance, then select the **Networking** link under **Settings**. The firewall must be configured to allow the web application to connect to the database.
+10. In the Azure Portal, navigate to the **Azure Database for MySQL** instance, then select the **Networking** link under **Settings**. The firewall must be configured to allow the web application to connect to the database.
 
     ![Azure Database for MySQL blade with Networking link highlighted.](images/Ex2-T2-S12.png "Azure Database for MySQL Networking link")
 
-13. On the **Networking** pane, add a new **Firewall rule** with the following values, then select **Save**.
+11. On the **Networking** pane, add a new **Firewall rule** with the following values, then select **Save**.
 
     - **Firewall rule name**: `webapp-vm`
     - **Start IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" enableCopy="false" />** virtual machine.
@@ -352,13 +382,13 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
     ![Networking pane with firewall rulename and save hihglighted.](images/Ex2-T2-S13.png "Networking pane")
 
-14. Open a new browser tab, and navigate to the following URL to test that the web application is installed. Be sure to use `http://` since the web application is not currently configured for TLS/SSL.
+12. Open a new browser tab, and navigate to the following URL to test that the web application is installed. Be sure to use `http://` since the web application is not currently configured for TLS/SSL.
 
     ```text
     http://<ip-address>
     ```
 
-15. The web application will look similar to the following screenshot. Login using the following credentials:
+13. The web application will look similar to the following screenshot. Login using the following credentials:
   
     - **Username**: `Admin`
     - **Password**:`ipamadmin`
