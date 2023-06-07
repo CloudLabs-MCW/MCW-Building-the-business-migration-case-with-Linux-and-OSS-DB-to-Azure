@@ -90,11 +90,11 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![The Azure Database for MySQL result shown in the marketplace.](images/azure-data-mysql.png "Azure Database for MySQL in the marketplace")
 
-4. On the **Select Azure Database for MySQL deployment option** pane, under **Flexible server**, then select **Create**.
+4. On the **Select Azure Database for MySQL deployment option** pane, under **Flexible server**, select **Create**.
 
     ![The Flexible server option is selected with the create button highlighted.](images/flexible-server.png "Flexible server resource type")
 
-6. On the **Flexible server** pane, select the following values:
+5. On the **Flexible server** pane, select the following values:
 
     - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**.
     - **Server name**: Enter a unique name, such as **terrafirm-mysql-db<inject key="DeploymentID" enableCopy="false" />**.
@@ -103,7 +103,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![The Flexible server pane is shown with values entered.](images/Ex1-T1-S6.png "Flexible server configuration")
 
-7. Under **Administrator account**, set the **Admin username** and **Password** for the MySQL admin account.
+6. Under **Administrator account**, set the **Admin username** and **Password** for the MySQL admin account.
    
     - **Admin username**: `mysqladmin`
     -  **Password**: `demo!pass123`
@@ -111,35 +111,35 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
     ![Administrator account credentials are set.](images/Ex1-T1-S7.png "Administrator account credentials")
 
    
-8. Select **Next: Networking >**.
+7. Select **Next: Networking >**.
 
     ![Image with Next Networking button highlighted.](images/Ex1-T1-S8.png "Next Networking button")
 
-9. On the **Networking** tab, under **Firewall rules**, select the checkbox for **Allow public access from any Azure service within Azure to this server**.
+8. On the **Networking** tab, under **Firewall rules**, select the checkbox for **Allow public access from any Azure service within Azure to this server**.
 
     ![Allow public access from any Azure service within Azure to this server is checked.](images/Ex1-T1-S9.png "Firewall rules")
 
-10. Select **Review + create**.
+9. Select **Review + create**.
 
     ![Review + create button](images/Ex1-T1-S10.png "Review + create button")
 
-11. Select **Create** to provision the service.
+10. Select **Create** to provision the service.
 
     ![The Review + create screen with Create button highlighted.](images/Ex1-T1-S11.png "Review + create screen")
 
-12. Once provisioning has completed navigate to the **Azure Database for MySQL** resource that was just created, copy and save the **Server name** for use later.
+11. Once provisioning has completed navigate to the **Azure Database for MySQL** resource that was just created, copy and save the **Server name** for use later.
 
     ![The Azure Database for MySQL server name is highlighted.](images/Ex1-T1-S12.png "Azure Database for MySQL blade")
 
-13. Select **Databases** under **Settings** on the side of the pane.
+12. Select **Databases** under **Settings** on the side of the pane.
 
     ![Databases link is hihghlighted.](images/Ex1-T1-S13.png "Databases link")
 
-14. Select **+ Add** to create a new database.
+13. Select **+ Add** to create a new database.
 
     ![Add database button is highlighted.](images/Ex1-T1-S14.png "Add database button")
 
-15. On the **Create Database** pane, enter `phpipam` in the **Name** field, then select **Save**. This will create a new MySQL database that will be the target for the database migration.
+14. On the **Create Database** pane, enter `phpipam` in the **Name** field, then select **Save**. This will create a new MySQL database that will be the target for the database migration.
 
     ![The Create database pane is shown with values entered.](images/Ex1-T1-S15.png "Create database pane")
 
