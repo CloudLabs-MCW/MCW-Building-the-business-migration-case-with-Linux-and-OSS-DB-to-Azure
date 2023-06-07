@@ -86,15 +86,13 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
     ![Create a resource on Azure Portal Home page.](images/Ex1-T1-S1.png "Create a resource")
 
-3. Within the **Search services and marketplace** field, type `mysql`, press Enter, then select **Azure Database for MySQL** in the search results.
+3. Within the **Search services and marketplace** field, type `mysql`, press Enter, then select **Azure Database for MySQL** in the search results. Click **Create** and **Azure Database for MySQL**.
 
-    ![The Azure Database for MySQL result shown in the marketplace.](images/Ex1-T1-S2.png "Azure Database for MySQL in the marketplace")
+    ![The Azure Database for MySQL result shown in the marketplace.](images/azure-data-mysql.png "Azure Database for MySQL in the marketplace")
 
-4. Select **Create**.
+4. On the **Select Azure Database for MySQL deployment option** pane, under **Flexible server**, then select **Create**.
 
-5. On the **Select Azure Database for MySQL deployment option** pane, select the **Resource type** of **Flexible server**, then select **Create**.
-
-    ![The Flexible server option is selected with the create button highlighted.](images/Ex1-T1-S5.png "Flexible server resource type")
+    ![The Flexible server option is selected with the create button highlighted.](images/flexible-server.png "Flexible server resource type")
 
 6. On the **Flexible server** pane, select the following values:
 
