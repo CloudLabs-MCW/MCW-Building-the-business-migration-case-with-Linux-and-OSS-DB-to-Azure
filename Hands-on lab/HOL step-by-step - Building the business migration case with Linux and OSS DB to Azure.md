@@ -98,9 +98,9 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 6. On the **Flexible server** pane, select the following values:
 
-    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" />**.
-    - **Server name**: Enter a unique name, such as **terrafirm-mysql-db<inject key="DeploymentID" />**.
-    - **Region**: **<inject key="location" />**.
+    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**.
+    - **Server name**: Enter a unique name, such as **terrafirm-mysql-db<inject key="DeploymentID" enableCopy="false" />**.
+    - **Region**: **<inject key="location" enableCopy="false" />**.
     - **MySQL version**: **8.0**
 
     ![The Flexible server pane is shown with values entered.](images/Ex1-T1-S6.png "Flexible server configuration")
@@ -177,9 +177,9 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 5. On the **Select target** tab, enter the following values to select the **Azure Database for MySQL** service that was previously provisioned.
 
-    - **Location**: **<inject key="location" />**.
-    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" />**.
-    - **Azure Database for MySQL**: The Azure Database for MySQL service provisioned previously **terrafirm-mysql-db<inject key="DeploymentID" />**.
+    - **Location**: **<inject key="location" enableCopy="false" />**.
+    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**.
+    - **Azure Database for MySQL**: The Azure Database for MySQL service provisioned previously **terrafirm-mysql-db<inject key="DeploymentID" enableCopy="false" />**.
     - **User name**: **mysqladmin**
     - **Password**: **demo!pass123**
 
@@ -229,9 +229,9 @@ In this task, you will create a new Red Hat Enterprise Linux virtual machine (VM
 
 5. On the **Create a virtual machine** pane, set the following values to configure the new virtual machine:
 
-    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" />**.
-    - **Virtual machine name**: Give the VM a unique name, such as **terrafirm-webapp-vm-<inject key="DeploymentID" />**.
-    - **Region**: **<inject key="location" />**.
+    - **Resource group**: Select the resource group **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**.
+    - **Virtual machine name**: Give the VM a unique name, such as **terrafirm-webapp-vm-<inject key="DeploymentID" enableCopy="false" />**.
+    - **Region**: **<inject key="location" enableCopy="false" />**.
     - **Image**: Verify the image is set to **Red Hat Enterprise Linux 9.0 (LVM)**.
 
     ![Create a virtual machine with fields set.](images/Ex2-T1-S5.png "Create a virtual machine pane")
@@ -298,7 +298,7 @@ In this task, you will connect to the VM over SSH to install and configure the w
 
 5. If prompted about not having a storage account mounted, click on **Show advanced settings**. Select Create new under Storage account and provide values as below: 
   
-      - **Resource Group**: Select **Use existing** then click on **Terrafirm-<inject key="DeploymentID" />**
+      - **Resource Group**: Select **Use existing** then click on **Terrafirm-<inject key="DeploymentID" enableCopy="false" />**
       - **Storage account**: **storage<inject key="DeploymentID" enableCopy="false"/>**
       - **File Share**: **blob**
 
@@ -349,8 +349,8 @@ In this task, you will connect to the VM over SSH to install and configure the w
 13. On the **Networking** pane, add a new **Firewall rule** with the following values, then select **Save**.
 
     - **Firewall rule name**: `webapp-vm`
-    - **Start IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
-    - **End IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" />** virtual machine.
+    - **Start IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" enableCopy="false" />** virtual machine.
+    - **End IP address**: Enter the **Public IP Address** for the **terrafirm-webapp-vm-<inject key="DeploymentID" enableCopy="false" />** virtual machine.
 
     ![Networking pane with firewall rulename and save hihglighted.](images/Ex2-T2-S13.png "Networking pane")
 
