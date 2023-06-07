@@ -146,7 +146,7 @@ In this exercise, you will migrate the on-premises MySQL database for the web ap
 
 ### Task 2: Migration MySQL database to Azure
 
-1. In the Azure Portal, navigate to **Azure Database Migration Service**, **terrafirm-database-migration<inject key="DeploymentID" />** in **Terrafirm-<inject key="DeploymentID" />** and select the **+ New Migration Project** button.
+1. In the Azure Portal, navigate to **Azure Database Migration Service**, **terrafirm-database-migration<inject key="DeploymentID" enableCopy="false" />** in **Terrafirm-<inject key="DeploymentID" enableCopy="false" />** and select the **+ New Migration Project** button.
 
     ![Azure Database Migration Service blade with New Migration Project button highlighted.](images/Ex1-T2-S1.png "New Migration Project button")
 
